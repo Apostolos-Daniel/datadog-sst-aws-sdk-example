@@ -15,3 +15,29 @@
 Metrics should be sent to Datadog. Only the cdk app is sending metrics. The SST app is not.
 
 ![alt text](image.png)
+
+## Notes
+
+We do have a stack in production that works using SST. Here's a representative example of the Lambda configuration:
+
+![alt text](image-3.png)
+![alt text](image-4.png)
+
+For the SST stack in this repo, the Lambda configuration is the same, but the metrics are not sent to Datadog.
+
+![alt text](image-5.png)
+
+![alt text](image-6.png)
+
+For the CDK stack in this repo, the Lambda configuration looks very similar, but the metrics are sent to Datadog.
+
+The difference is how the Lambda is packaged and deployed.
+
+![alt text](image-9.png)
+
+
+![alt text](image-10.png)
+
+Note how the handler in both cases is set to `/opt/nodejs/node_modules/datadog-lambda-js/handler.handler` and `DD_LAMBDA_HANDLER` is set to `sendMEtric.handler` in the CDK stack, but `DD_LAMBDA_HANDLER` is set to `lambda.handler` in the SST stack. This is correct. WE have also included the `datadog-lambda-js` package in both stacks. According to the documentation this means that we are using the packages rather than the layers? I'm not sure if that's true.
+
+There is documentation [here](https://docs.datadoghq.com/serverless/guide/serverless_tracing_and_bundlers/#aws-cdk--esbuild) that suggesets how to confiugre `esbuild` but this is not implemented in this repo (nor have I tried it).
