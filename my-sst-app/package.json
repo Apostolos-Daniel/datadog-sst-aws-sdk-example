@@ -1,0 +1,28 @@
+{
+  "name": "my-sst-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sst dev",
+    "build": "sst build",
+    "deploy": "sst deploy",
+    "remove": "sst remove",
+    "console": "sst console",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-secrets-manager": "3.723.0",
+    "@tsconfig/node18": "^18.2.4",
+    "aws-cdk-lib": "2.142.1",
+    "constructs": "10.3.0",
+    "datadog-cdk-constructs-v2": "1.21.0",
+    "datadog-lambda-js": "9.118.0",
+    "dd-trace": "5.30.0",
+    "sst": "2.43.7",
+    "typescript": "^5.7.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
