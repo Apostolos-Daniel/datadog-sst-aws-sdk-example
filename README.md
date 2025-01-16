@@ -1,10 +1,10 @@
 # Reproduction notes
 
-1. `cd datadog-cdk`
+1. `cd datadog-cdk && npm i`
 2. `npm run build`
 3. `npx cdk deploy`
 4. `cd ..`
-5. `cd my-sst-app`
+5. `cd my-sst-app && npm i`
 6. `npm sst deploy -stage test`
 7. Hit the two endpoints, e.g. `curl https://<your-api-id>.execute-api.eu-west-1.amazonaws.com/prod/` for CDK and `curl https://<your-api-id>.execute-api.eu-west-1.amazonaws.com` for SST
 
