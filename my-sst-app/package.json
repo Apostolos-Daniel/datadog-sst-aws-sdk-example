@@ -18,11 +18,15 @@
     "constructs": "10.3.0",
     "datadog-cdk-constructs-v2": "1.21.0",
     "datadog-lambda-js": "9.118.0",
-    "dd-trace": "5.30.0",
+    "dd-trace": "^5.32.0",
     "sst": "2.43.7",
     "typescript": "^5.7.2"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.734.0",
+    "@aws-sdk/client-sqs": "^3.734.0"
+  }
 }

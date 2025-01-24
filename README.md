@@ -4,17 +4,17 @@
 2. `npm run build`
 3. `npx cdk deploy`
 4. `cd ..`
-5. `cd my-sst-app && npm i`
-6. `npm sst deploy -stage test`
+5. `cd my-sst-app && pnpm i`
+6. `pnpm sst deploy --stage test`
 7. Hit the two endpoints, e.g. `curl https://<your-api-id>.execute-api.eu-west-1.amazonaws.com/prod/` for CDK and `curl https://<your-api-id>.execute-api.eu-west-1.amazonaws.com` for SST
 
-![alt text](image-1.png)
+![cdk tracing example](image-11.png)
+![alt text](image-13.png)
 
-![alt text](image-2.png)
 
-Metrics should be sent to Datadog. Only the cdk app is sending metrics. The SST app is not.
+![cdk tracing example 2](image-14.png)
 
-![alt text](image.png)
+S3 and SQS spans should appear in the traces for both. Both the S3 and SQS spans should be created.
 
 ## Notes
 

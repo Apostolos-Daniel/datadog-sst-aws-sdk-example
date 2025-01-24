@@ -1,4 +1,4 @@
-import { StackContext, Api } from "sst/constructs";
+import { StackContext, Api, Bucket, Queue } from "sst/constructs";
 import { LogFormat, ApplicationLogLevel } from 'aws-cdk-lib/aws-lambda';
 
 export function API({ stack }: StackContext) {
@@ -7,7 +7,7 @@ export function API({ stack }: StackContext) {
     applicationLogLevel: ApplicationLogLevel.DEBUG,
     runtime: 'nodejs20.x',
     environment: {
-      DD_TRACE_DISABLED_PLUGINS: 'dns',
+      // DD_TRACE_DISABLED_PLUGINS: 'dns',
       NODE_OPTIONS: '--enable-source-maps',
       DD_LOG_LEVEL: 'DEBUG',
     },
@@ -16,9 +16,22 @@ export function API({ stack }: StackContext) {
     },
   });
 
+  stack.tags.setTag('service', 'my-sst-app');
+
+  // Create an S3 bucket
+  const bucket = new Bucket(stack, "ToliHelloWorldBucket");
+
+  // Create an SQS queue
+  const queue = new Queue(stack, "MyQueue");
+
   const api = new Api(stack, "api", {
     routes: {
-      "GET /": "packages/functions/src/lambda.handler",
+      "GET /": {
+        function: {
+          handler: "packages/functions/src/lambda.handler",
+          bind: [bucket, queue]
+        },
+      },
     },
   });
   stack.addOutputs({
