@@ -13,6 +13,15 @@ export function API({ stack }: StackContext) {
     },
     nodejs: {
       sourcemap: true,
+      esbuild: {
+        external: [
+          "sst/constructs",
+          "datadog-cdk-constructs-v2",
+          "aws-cdk-lib/aws-lambda",
+          "dd-trace",
+          "datadog-lambda-js"
+        ],
+      },
     },
   });
 

@@ -12,19 +12,6 @@ export default {
     };
   },
   async stacks(app) {
-    app.setDefaultFunctionProps({
-      nodejs: {
-        esbuild: {
-          external: [
-            "sst/constructs",
-            "datadog-cdk-constructs-v2",
-            "aws-cdk-lib/aws-lambda",
-            "dd-trace",
-            "datadog-lambda-js"
-          ],
-        },
-      },
-    });
 
     app.stack(API);
 

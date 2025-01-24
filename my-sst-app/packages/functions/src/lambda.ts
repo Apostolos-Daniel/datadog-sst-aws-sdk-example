@@ -1,5 +1,3 @@
-import 'dd-trace/init'; // Initialize Datadog tracing at the top
-// import { ApiHandler } from 'sst/node/api';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { SQSClient, SendMessageCommand } from '@aws-sdk/client-sqs';
 import { sendDistributionMetric } from "datadog-lambda-js";
