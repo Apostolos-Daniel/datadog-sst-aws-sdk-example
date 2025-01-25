@@ -19,7 +19,9 @@ export function API({ stack }: StackContext) {
           "datadog-cdk-constructs-v2",
           "aws-cdk-lib/aws-lambda",
           "dd-trace",
-          "datadog-lambda-js"
+          "datadog-lambda-js",
+          "@aws-sdk/client-s3",
+          "@aws-sdk/client-sqs"
         ],
       },
     },
